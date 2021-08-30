@@ -1,8 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import App from "./App";
+
 import "./index.scss";
 
 ReactDOM.render(
-  <div> MIkołaj !!!!!!!!</div>,
+  <div>
+    <App />
+  </div>,
   document.getElementById("root")
 );

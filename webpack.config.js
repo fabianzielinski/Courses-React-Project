@@ -1,4 +1,5 @@
 // const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+// const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const path = require("path");
 const webpack = require("webpack");
 
@@ -8,7 +9,7 @@ const TerserPlugin = require("terser-webpack-plugin");
 
 module.exports = {
   mode: "development",
-  entry: ["./src/index.tsx", "./src/index.scss"],
+  entry: { index: path.join(__dirname, "./src/index.tsx") },
 
   output: {
     path: __dirname + "/dist",
@@ -17,6 +18,7 @@ module.exports = {
 
   plugins: [
     new webpack.ProgressPlugin(),
+    // new CleanWebpackPlugin("src/public/dist"),
     // new MiniCssExtractPlugin({ filename: "main.[contenthash].css" }),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, "src", "index.html"),
@@ -46,7 +48,12 @@ module.exports = {
   },
 
   resolve: {
-    extensions: [".tsx", ".ts", ".js", ".scss"],
+    symlinks: false,
+    alias: {
+      helpers: path.resolve(__dirname, "src/helpers/"),
+      store: path.resolve(__dirname, "src/store/"),
+    },
+    extensions: [".tsx", ".ts", ".js", "jsx", ".scss"],
   },
 
   optimization: {
