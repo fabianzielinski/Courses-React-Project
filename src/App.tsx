@@ -5,7 +5,7 @@ import StoreProvider from "store/StoreProvider";
 
 const App = () => (
   <StoreProvider>
-    {/* <p>Tak jest na początku</p> */}
+    <p>Tak jest na początku fas</p>
     <Header />
   </StoreProvider>
 );
