@@ -4,13 +4,21 @@ import React, { useContext, FC } from "react";
 import { StoreContext } from "../../store/StoreProvider";
 
 const Header: FC = () => {
-  const { user } = useContext(StoreContext);
+  const { users } = useContext(StoreContext);
+  const { courses } = useContext(StoreContext);
 
-  const setProperlyLabel = Boolean(user) ? "Wyloguj się" : "Zaloguj się";
+  const setProperlyLabel = Boolean(users) ? "Wyloguj się" : "Zaloguj się";
+
+  const coursesElement = courses.map((cours) => (
+    <li key={cours.id}>
+      * {cours.title} - {cours.authors}
+    </li>
+  ));
 
   return (
     <>
-      <div>AAA</div>
+      <ul> {coursesElement}</ul>
+
       <h1>Super Kursy dla programistów</h1>
       <button>{setProperlyLabel}</button>
     </>

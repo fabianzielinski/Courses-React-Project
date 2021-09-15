@@ -12,7 +12,6 @@ interface courseType {
 }
 
 interface coursesContextData {
-  user: userType[];
-  course: courseType[];
-  // featchDate?: () => void;
+  users: userType[];
+  courses: courseType[];
 }
